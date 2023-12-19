@@ -1,4 +1,6 @@
 import { getInitialData } from ".";
 
-export const activeNotes = getInitialData();
-export const archivedNotes = [];
+const initialData = getInitialData();
+
+export const activeNotes = initialData.filter((note) => !note.archived);
+export const archivedNotes = initialData.filter((note) => note.archived);

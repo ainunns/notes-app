@@ -27,7 +27,7 @@ export default function NotesList() {
         <Tab.Panels as="div" className="bg-blue-100">
           <Tab.Panel
             as="div"
-            className="rounded px-4 py-6 grid grid-cols-5 gap-6"
+            className="rounded px-4 py-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
           >
             {activeNotes.map((note) => (
               <NotesCard key={note.id} {...note} />
@@ -35,7 +35,7 @@ export default function NotesList() {
           </Tab.Panel>
           <Tab.Panel
             as="div"
-            className="rounded px-4 py-6 grid grid-cols-5 gap-6"
+            className="rounded px-4 py-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
           >
             {archivedNotes.map((note) => (
               <NotesCard key={note.id} {...note} />
