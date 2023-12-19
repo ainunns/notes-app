@@ -1,5 +1,7 @@
 import React from "react";
 import { Tab } from "@headlessui/react";
+import { activeNotes, archivedNotes } from "../utils/storage";
+import NotesCard from "./NotesCard";
 
 export default function NotesList() {
   return (
@@ -22,9 +24,23 @@ export default function NotesList() {
             Archives
           </Tab>
         </Tab.List>
-        <Tab.Panels>
-          <Tab.Panel>Content 1</Tab.Panel>
-          <Tab.Panel>Content 2</Tab.Panel>
+        <Tab.Panels as="div" className="bg-blue-100">
+          <Tab.Panel
+            as="div"
+            className="rounded px-4 py-6 grid grid-cols-5 gap-6"
+          >
+            {activeNotes.map((note) => (
+              <NotesCard key={note.id} {...note} />
+            ))}
+          </Tab.Panel>
+          <Tab.Panel
+            as="div"
+            className="rounded px-4 py-6 grid grid-cols-5 gap-6"
+          >
+            {archivedNotes.map((note) => (
+              <NotesCard key={note.id} {...note} />
+            ))}
+          </Tab.Panel>
         </Tab.Panels>
       </Tab.Group>
     </section>
