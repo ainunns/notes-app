@@ -10,7 +10,7 @@ export default function NotesApp() {
   return (
     <Layout withNavbar={true}>
       <NotesMenu data={notes} setData={setNotes} />
-      <NotesList data={notes} />
+      <NotesList data={notes} setData={setNotes} />
     </Layout>
   );
 }

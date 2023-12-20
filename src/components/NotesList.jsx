@@ -2,7 +2,7 @@ import React from "react";
 import { Tab } from "@headlessui/react";
 import NotesCard from "./NotesCard";
 
-export default function NotesList({ data }) {
+export default function NotesList({ data, setData }) {
   const activeNotes = data.filter((note) => !note.archived);
   const archivedNotes = data.filter((note) => note.archived);
   return (
@@ -31,7 +31,9 @@ export default function NotesList({ data }) {
             className="rounded px-4 py-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
           >
             {activeNotes.length > 0 ? (
-              activeNotes.map((note) => <NotesCard key={note.id} {...note} />)
+              activeNotes.map((note) => (
+                <NotesCard key={note.id} setData={setData} {...note} />
+              ))
             ) : (
               <p className="text-center text-lg text-slate-700">
                 No active notes found
@@ -43,7 +45,9 @@ export default function NotesList({ data }) {
             className="rounded px-4 py-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
           >
             {archivedNotes.length > 0 ? (
-              archivedNotes.map((note) => <NotesCard key={note.id} {...note} />)
+              archivedNotes.map((note) => (
+                <NotesCard key={note.id} setData={setData} {...note} />
+              ))
             ) : (
               <p className="text-center text-lg text-slate-700">
                 No archived notes found

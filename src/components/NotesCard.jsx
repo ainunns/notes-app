@@ -3,7 +3,18 @@ import { showFormattedDate } from "../utils";
 import { BsTrashFill } from "react-icons/bs";
 import { BiSolidArchiveIn } from "react-icons/bi";
 
-export default function NotesCard({ id, title, body, createdAt }) {
+export default function NotesCard({
+  id,
+  title,
+  body,
+  createdAt,
+  archived,
+  setData,
+}) {
+  const handleDeleteNotes = () => {
+    setData((data) => data.filter((note) => note.id !== id));
+  };
+
   return (
     <div
       key={id}
@@ -15,7 +26,10 @@ export default function NotesCard({ id, title, body, createdAt }) {
       </div>
       <p className="font-medium text-lg text-left">{body}</p>
       <div className="grid grid-cols-2 w-full gap-4">
-        <button className="bg-rose-500 hover:bg-rose-700 text-slate-100 font-bold py-2 px-4 rounded flex flex-row gap-2 items-center justify-center">
+        <button
+          className="bg-rose-500 hover:bg-rose-700 text-slate-100 font-bold py-2 px-4 rounded flex flex-row gap-2 items-center justify-center"
+          onClick={handleDeleteNotes}
+        >
           <BsTrashFill />
           Delete
         </button>
