@@ -2,8 +2,16 @@ import React from "react";
 import { showFormattedDate } from "../utils";
 import { BsTrashFill } from "react-icons/bs";
 import { BiSolidArchiveIn } from "react-icons/bi";
+import { MdUnarchive } from "react-icons/md";
 
-export default function NotesCard({ id, title, body, createdAt, setData }) {
+export default function NotesCard({
+  id,
+  title,
+  body,
+  archived,
+  createdAt,
+  setData,
+}) {
   const handleDeleteNotes = () => {
     setData((data) => data.filter((note) => note.id !== id));
   };
@@ -12,7 +20,7 @@ export default function NotesCard({ id, title, body, createdAt, setData }) {
     setData((data) =>
       data.map((note) => {
         if (note.id === id) {
-          return { ...note, archived: true };
+          return { ...note, archived: !note.archived };
         }
         return note;
       })
@@ -45,8 +53,17 @@ export default function NotesCard({ id, title, body, createdAt, setData }) {
           className="bg-blue-500 hover:bg-blue-700 text-slate-100 font-bold py-2 px-4 rounded flex flex-row gap-2 items-center justify-center"
           onClick={handleArchiveNotes}
         >
-          <BiSolidArchiveIn />
-          Archive
+          {archived ? (
+            <>
+              <MdUnarchive />
+              Unarchive
+            </>
+          ) : (
+            <>
+              <BiSolidArchiveIn />
+              Archive
+            </>
+          )}
         </button>
       </div>
     </div>
