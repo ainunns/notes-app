@@ -35,7 +35,7 @@ export default function NotesForm({ isOpen, onClose, onAddNote }) {
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-5 py-6 bg-white rounded-xl flex flex-col gap-8 w-2/5"
       >
         <Dialog.Title as="h1" className="font-semibold text-center text-4xl">
-          Tambah Notes Baru
+          Add New Notes
         </Dialog.Title>
         <form onSubmit={handleAddNote} className="flex flex-col gap-6">
           <div className="flex flex-col gap-4">
@@ -83,7 +83,7 @@ export default function NotesForm({ isOpen, onClose, onAddNote }) {
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-1/5"
               type="submit"
             >
-              Simpan
+              Save
             </button>
           </div>
         </form>
